@@ -10,21 +10,14 @@ var parsed_model = JSON.parse(atob(model))
 var parser = new DOMParser();
 
 document.getElementById("train_svg").innerHTML = ('<object type="image/svg+xml" id="train_svga" data="/captcha" width="150" style="border: 1px solid black;"></object>');
-document.getElementById("camp_svg").innerHTML = ('<object type="image/svg+xml" id="camp_svga" data="/captcha" width="150" style="border: 1px solid black;"></object>');
 let img = document.getElementById('train_svga');
-let imga = document.getElementById('train_svga');
 console.log(img);
-console.log(imga);
 async function decode(){
   await sleep(800);
   var s = img;
-  var sb = imga;
   console.log(s);
-  console.log(sb);
   var svg = document.getElementById("train_svga").contentDocument
-  var svga = document.getElementById("camp_svga").contentDocument
   console.log($(svg))
-  console.log($(svga))
   $(svg).find('path').each((_, p) => { if($(p).attr('stroke') != undefined) $(p).remove()})
   vals = []
   $(svg).find('path').each(
@@ -34,42 +27,23 @@ async function decode(){
       }
   )
 
-  $(svga).find('path').each((_, p) => { if($(p).attr('stroke') != undefined) $(p).remove()})
-  vals = []
-  $(svga).find('path').each(
-      (_, p) => { 
-          idx = parseInt($(p).attr("d").split(".")[0].replace("M", ""))
-          vals.push(idx)
-      }
-  )
-
   var sorted = [...vals].sort(function(a,b) { return a - b; })
   solution = []
   console.log(solution);
-
   $(svg).find('path').each(
       (idx, p) => { 
           var pattern = $(p).attr('d').replace(/[0-9 \.]/g, "")
 
           solution[sorted.indexOf(vals[idx])] = parsed_model[pattern]
       })
-  $(svga).find('path').each(
-      (idx, p) => { 
-           var pattern = $(p).attr('d').replace(/[0-9 \.]/g, "")
-  
-          solution[sorted.indexOf(vals[idx])] = parsed_model[pattern]
-        })
-  
   await sleep(100)
   document.getElementById("train_code").value = solution.join("");
-  document.getElementById("camp_code").value = solution.join("");
 }
   decode();
 
 
   function reloadSVGcaptcha(th){
     document.getElementById("train_svg").innerHTML = ('<object type="image/svg+xml" id="train_svga" data="/captcha" width="150" style="border: 1px solid black;"></object>');
-    document.getElementById("camp_svg").innerHTML = ('<object type="image/svg+xml" id="camp_svga" data="/captcha" width="150" style="border: 1px solid black;"></object>');
     decode();
   }
 
