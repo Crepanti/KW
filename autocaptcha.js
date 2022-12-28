@@ -38,7 +38,7 @@ async function decode(){
       })
   await sleep(100)
   document.getElementById("train_code").value = solution.join("");
-
+  document.getElementById("camp_code").value = solution.join("");
 }
   decode();
 
