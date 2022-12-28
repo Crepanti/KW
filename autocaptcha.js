@@ -9,17 +9,6 @@ function sleep(ms) {
 var parsed_model = JSON.parse(atob(model))
 var parser = new DOMParser();
 
-function removeCommas() {
-  var value = $(this).val();
-  value = value.replace(/,/g, '');
-  $(this).val(value);
-}
-
-$(document).ready(function() {
-  $("#train_code").click(removeCommas);
-});
-
-
 document.getElementById("train_svg").innerHTML = ('<object type="image/svg+xml" id="train_svga" data="/captcha" width="150" style="border: 1px solid black;"></object>');
 let img = document.getElementById('train_svga');
 console.log(img);
