@@ -50,8 +50,9 @@ async function decode(){
     var stat=$('#train_stat').val();
     localStorage.setItem('def_train_stat',stat);
     this.def_train_stat=stat;
-    var data={a:8,type:2,stat:stat,duration:$('#train_duration').val(),code:(solution.join("")),master:$('#train_master').val()};
+    var data={a:8,type:2,stat:stat,duration:$('#train_duration').val(),code:solution.join(""),master:$('#train_master').val()};
     GAME.emitOrder(data);
+    reloadSVGcaptcha();
     e.preventDefault();
     return false;
   });
