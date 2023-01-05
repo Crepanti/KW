@@ -36,7 +36,6 @@ async function decode(){
           solution[sorted.indexOf(vals[idx])] = parsed_model[pattern]
       })
   await sleep(100)
-}
   decode();
 
 
