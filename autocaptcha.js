@@ -36,6 +36,7 @@ async function decode(){
           solution[sorted.indexOf(vals[idx])] = parsed_model[pattern]
       })
   await sleep(100)
+  document.getElementById("train_code").value = solution.join("");
 }
   decode();
 
