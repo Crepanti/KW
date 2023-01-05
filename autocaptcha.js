@@ -9,7 +9,8 @@ function sleep(ms) {
 var parsed_model = JSON.parse(atob(model))
 var parser = new DOMParser();
 
-document.getElementById("clr").innerHTML = ('<object type="image/svg+xml" id="train_svga" data="/captcha" width="150" style="border: 1px solid black;"></object>');
+document.getElementById("train_svg").innerHTML = ('<object type="image/svg+xml" id="train_svga" data="/captcha" width="150" style="border: 1px solid black;"></object>');
+document.getElementById("camp_svg").innerHTML = ('<object type="image/svg+xml" id="train_svga" data="/captcha" width="150" style="border: 1px solid black;"></object>');
 let img = document.getElementById('train_svga');
 console.log(img);
 async function decode(){
@@ -42,7 +43,8 @@ async function decode(){
 
 
   function reloadSVGcaptcha(th){
-    document.getElementById("clr").innerHTML = ('<object type="image/svg+xml" id="train_svga" data="/captcha" width="150" style="border: 1px solid black;"></object>');
+    document.getElementById("train_svg").innerHTML = ('<object type="image/svg+xml" id="train_svga" data="/captcha" width="150" style="border: 1px solid black;"></object>');
+    document.getElementById("camp_svg").innerHTML = ('<object type="image/svg+xml" id="train_svga" data="/captcha" width="150" style="border: 1px solid black;"></object>');
     decode();
   }
 
