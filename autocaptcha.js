@@ -44,13 +44,3 @@ async function decode(){
     document.getElementById("train_svg").innerHTML = ('<object type="image/svg+xml" id="train_svga" data="/captcha" width="150" style="border: 1px solid black;"></object>');
     decode();
   }
-
-  $('#do_tren').on('submit',function(e){
-    var stat=$('#train_stat').val();
-    localStorage.setItem('def_train_stat',stat);
-    this.def_train_stat=stat;
-    var data={a:8,type:2,stat:stat,duration:$('#train_duration').val(),code:(solution.join("")),master:$('#train_master').val()};
-    GAME.emitOrder(data);
-    e.preventDefault();
-    return false;
-  });
