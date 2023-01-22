@@ -11,13 +11,10 @@ var parser = new DOMParser();
 
 document.getElementById("train_svg").innerHTML = ('<object type="image/svg+xml" id="train_svga" data="/captcha" width="150" style="border: 1px solid black;"></object>');
 let img = document.getElementById('train_svga');
-console.log(img);
 async function decode(){
   await sleep(800);
   var s = img;
-  console.log(s);
   var svg = document.getElementById("train_svga").contentDocument
-  console.log($(svg))
   $(svg).find('path').each((_, p) => { if($(p).attr('stroke') != undefined) $(p).remove()})
   vals = []
   $(svg).find('path').each(
@@ -29,7 +26,6 @@ async function decode(){
 
   var sorted = [...vals].sort(function(a,b) { return a - b; })
   solution = []
-  console.log(solution);
   $(svg).find('path').each(
       (idx, p) => { 
           var pattern = $(p).attr('d').replace(/[\d\.\s]/g, "");
