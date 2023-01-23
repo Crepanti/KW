@@ -9,7 +9,7 @@ newDiv.className = "adv";
 parent.appendChild(newDiv);
 
 function updateTimer() {
-  if(GAME.char_id!=0){
+  if(GAME.char_id!=0 && GAME.char_data.level!=0){
   //HANDLARZ
   var currentDate = new Date();
   var targetDay = 6; // Sobota
@@ -128,3 +128,4 @@ GAME.cached_data = function() {
 
 // WYKONUJ
 setInterval(updateTimer, 1000);
+setTimeout(GAME.cached_data, 5000);
