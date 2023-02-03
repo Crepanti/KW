@@ -1,10 +1,11 @@
-var logi = ""
+var logi = "";
+var resetBtn = null;
 
 console.log = function(message) {
-    logtime = $('#server_time').text()
-    logi = `<span style="padding-left: 10px;">${logtime}: ` + message + `<br></span>` + logi;
-    content.innerHTML = `> <span style="color: white;">${logi}</span>`;
-}
+  logtime = $('#server_time').text();
+  logi = `<span style="padding-left: 10px;">${logtime}: ` + message + `<br></span>` + logi;
+  content.innerHTML = `> <span style="color: white;">${logi}</span>`;
+};
 
 var panel = document.createElement("div");
 panel.setAttribute("id", "panel");
@@ -34,9 +35,32 @@ var content = document.createElement("div");
 content.setAttribute("id", "content");
 panel.appendChild(content);
 
+var resetBtn = document.createElement("div");
+resetBtn.setAttribute("id", "resetBtn");
+resetBtn.innerHTML = `<b>X</b>`;
+resetBtn.style.position = "absolute";
+resetBtn.style.top = "0";
+resetBtn.style.right = "0";
+resetBtn.style.padding = "5px 10px";
+resetBtn.style.backgroundColor = "#46a6de";
+resetBtn.style.color = "white";
+resetBtn.style.borderRadius = "50%";
+resetBtn.style.border = "none";
+resetBtn.style.width = "30px";
+resetBtn.style.height = "30px";
+resetBtn.style.textAlign = "center";
+resetBtn.style.cursor = "pointer";
+resetBtn.addEventListener("click", function() {
+  logtime = $('#server_time').text();
+  logi = "";
+  content.innerHTML = `> <span style="color: white;">${logtime}: Logi Wyczyszczone</span>`;
+});
+panel.appendChild(resetBtn);
+
 $('#logs').mousedown(function() {
   $('#panel').draggable();
 });
 $('#logs').mouseup(function() {
   $('#panel').draggable('destroy');
 });
+
