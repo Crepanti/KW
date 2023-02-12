@@ -35,13 +35,6 @@ function updateTimer() {
   handlarz = "Aktywny";
   }
 
-  //LEVEL
-  let currentLevel = GAME.char_data.level;
-  let currentTime = Date.now();
-  let levelsGained = currentLevel - startLevel;
-  let levelsPerHour = levelsGained / ((currentTime - startTime) / 1000 / 60 / 60);
-  levelnagodzine = levelsPerHour.toFixed(2);
-
   //PING
   GAME.socket.on('pong', function(ms) {
   latency = ms;
@@ -88,18 +81,9 @@ function updateTimer() {
   <span class="divstyle" style="color: #46a6de;">Handlarz:</span> ${handlarz} | 
   <span class="divstyle" style="color: #46a6de;">Aktywność:</span> ${active} / ${180} (${received}/${5}) | 
   <span class="divstyle" style="color: #46a6de;">Instancje:</span> ${sum} / ${12} | 
-  <span class="divstyle" style="color: #46a6de;">Level:</span><a id="myLink" onclick="reset();return false;"><span class="divstyle" style="color: white;"> ${levelnagodzine} / h </span> </a> |
   <span class="divstyle" style="color: #46a6de;">Ping:</span> <span id="latencyy">${latency}</span>
   `;
 }}
-
-//Resetuje Level
-function reset() {
-  if(GAME.char_data.level!=0){
-  startLevel = GAME.char_data.level;
-  startTime = Date.now();
-}
-}
 
 //NANIEŚ DANE
 GAME.cached_data = function() {
@@ -119,7 +103,6 @@ GAME.cached_data = function() {
   var pos = $('#char_buffs').offset();
   pos.left -= 75;
   pos.top -= 75;
-  reset();
   this.char_buffs_pos = pos;
   this.emitCalls.forEach(function(data) {
   GAME.socket.emit('ga', data);
