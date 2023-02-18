@@ -17,8 +17,8 @@ panel.style.position = "fixed";
 panel.style.left = "12%";
 panel.style.top = "80%";
 panel.style.transform = "translate(-50%, -50%)";
-panel.style.backgroundColor = "rgba(128,128,128, 0.1)";
-panel.style.border = "3px solid #333";
+panel.style.backgroundColor = "rgba(128,128,128, 0)";
+panel.style.border = "1px solid #333";
 panel.style.overflow = "auto";
 document.body.appendChild(panel);
 
