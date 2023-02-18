@@ -31,8 +31,6 @@ header.style.fontWeight = "bold";
 header.innerHTML = `Info`;
 div.appendChild(header);
 
-timer = $(`#tech_2_list`).find('.timer').text();
-
 // Utwórz element div dla tekstu
 const text = document.createElement("div");
 
@@ -42,7 +40,13 @@ text.style.top = "50px";
 text.style.left = "0px";
 text.style.fontSize = "12px";
 text.style.color = "white";
-text.innerHTML = `AURA: ${timer}`;
+
+function updejt() {
+timer = $(`#tech_2_list`).find('.timer').text();
+text.innerHTML = `<center>AURA: ${timer}</center>`;
+}
 
 // Dodaj element text do ciała strony
 div.appendChild(text);
+
+setInterval(updejt, 1000);
