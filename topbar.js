@@ -111,6 +111,10 @@ GAME.cached_data = function() {
     {
       a: 29, // Instancje
       type: 0
+    },
+    {
+      a: 18, // Techniki
+      type: 1
     }
   ];
   var pos = $('#char_buffs').offset();
