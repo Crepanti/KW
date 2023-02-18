@@ -67,7 +67,7 @@ function updateTimer() {
   }
 
   // AKTYWNOŚĆ
-  var active = '';
+  var active = "0";
   var akt_codes = [];
 
   try {
@@ -80,7 +80,7 @@ function updateTimer() {
     document.querySelector("#act_prizes").children[4].classList.value == 'act_prize disabled'
   ];
  } catch (err) {
-  active = '';
+  active = "0";
   akt_codes = [];
  }
 
