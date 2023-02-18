@@ -41,14 +41,20 @@ function updateTimer() {
   });
 
   // INSTANCJE
-  var icd_codes = [
-    GAME.char_data.icd_1,
-    GAME.char_data.icd_2,
-    GAME.char_data.icd_3,
-    GAME.char_data.icd_4,
-    GAME.char_data.icd_5,
-    GAME.char_data.icd_6
-  ];
+  var icd_codes = [];
+
+  try {
+    icd_codes = [
+      GAME.char_data.icd_1,
+      GAME.char_data.icd_2,
+      GAME.char_data.icd_3,
+      GAME.char_data.icd_4,
+      GAME.char_data.icd_5,
+      GAME.char_data.icd_6
+    ];
+  } catch (err) {
+    console.log('Wystąpił błąd: ' + err);
+  }
 
   sum = icd_codes.reduce(function(a, b) {
     return a + b;
