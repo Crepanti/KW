@@ -6,7 +6,7 @@ $(document).bind('keydown', '0', function(){
 });
 
 GAME.emitOrder = (data) => GAME.socket.emit('ga',data);
-var tabela99=[472686, 482504];
+var tabela99=[472686, 482504, 410723];
 var freeAssist = document.createElement('button');
 freeAssist.innerHTML = "ASYSTUJ WSZYSTKIM ZA DARMO"
 freeAssist.className = "newBtn option"
