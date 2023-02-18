@@ -53,7 +53,6 @@ function updateTimer() {
       GAME.char_data.icd_6
     ];
   } catch (err) {
-    console.log('Wystąpił błąd: ' + err);
   }
 
   sum = icd_codes.reduce(function(a, b) {
@@ -81,7 +80,6 @@ function updateTimer() {
     document.querySelector("#act_prizes").children[4].classList.value == 'act_prize disabled'
   ];
  } catch (err) {
-  console.log('Wystąpił błąd: ' + err);
   active = '';
   akt_codes = [];
  }
