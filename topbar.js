@@ -68,6 +68,10 @@ function updateTimer() {
   }
 
   // AKTYWNOŚĆ
+  var active = '';
+  var akt_codes = [];
+
+  try {
   active = $('#char_activity').text();
   akt_codes = [
     document.querySelector("#act_prizes").children[0].classList.value == 'act_prize disabled',
@@ -76,6 +80,11 @@ function updateTimer() {
     document.querySelector("#act_prizes").children[3].classList.value == 'act_prize disabled',
     document.querySelector("#act_prizes").children[4].classList.value == 'act_prize disabled'
   ];
+ } catch (err) {
+  console.log('Wystąpił błąd: ' + err);
+  active = '';
+  akt_codes = [];
+ }
 
   received = akt_codes.reduce(function(a, b) {
     return a + b;
