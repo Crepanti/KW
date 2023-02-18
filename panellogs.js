@@ -56,11 +56,3 @@ resetBtn.addEventListener("click", function() {
   content.innerHTML = `> <span style="color: white;">${logtime}: Logi Wyczyszczone</span>`;
 });
 panel.appendChild(resetBtn);
-
-$('#logs').mousedown(function() {
-  $('#panel').draggable();
-});
-$('#logs').mouseup(function() {
-  $('#panel').draggable('destroy');
-});
-
