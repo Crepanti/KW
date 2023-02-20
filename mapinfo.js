@@ -28,7 +28,7 @@ header.style.color = "white";
 header.style.fontSize = "16px";
 header.style.fontWeight = "bold";
 
-header.innerHTML = `Info`;
+header.innerHTML = `Zadania`;
 div.appendChild(header);
 
 // Utwórz element div dla tekstu
@@ -41,12 +41,32 @@ text.style.left = "0px";
 text.style.fontSize = "12px";
 text.style.color = "white";
 
-function updejt() {
-timer = $(`#tech_2_list`).find('.timer').text();
-text.innerHTML = `<center>AURA: ${timer}</center>`;
+function textorek() {
+const textoro = $('#drag_con').find('.sep3').parent()[0].textContent;
+text.innerHTML = textoro;
+}
+let prevLoc = GAME.char_data.loc;
+
+function updateQuestNames() {
+    if (GAME.char_data.loc !== prevLoc) {
+    prevLoc = GAME.char_data.loc;
+    const quests = GAME.map_quests;
+    let questNames = '';
+
+for (let key in quests) {
+    if (quests.hasOwnProperty(key)) {
+      const modifiedKey = key.replace('_', ' | ');
+      
+      for (let quest of quests[key]) {
+        questNames += '[ ' + modifiedKey + ' ]' + ': ' + quest.name + '<br>';
+      }
+    }
+  }
+    }
 }
 
-// Dodaj element text do ciała strony
 div.appendChild(text);
 
-setInterval(updejt, 1000);
+setInterval(function() {
+    textorek();
+  }, 1000);
