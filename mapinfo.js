@@ -71,7 +71,7 @@ header.style.left = "0";
 header.style.width = "100%";
 header.style.padding = "7px 0";
 header.style.textAlign = "center";
-header.style.backgroundColor = "#46a6de";
+header.style.backgroundColor = "rgba(20, 20, 19)";
 header.style.color = "white";
 header.style.fontSize = "14px";
 header.style.fontWeight = "bold";
@@ -86,7 +86,7 @@ text.style.position = "absolute";
 text.style.top = "60px";
 text.style.left = "0px";
 text.style.fontSize = "14px";
-text.style.color = "rgba(20, 20, 19)";
+text.style.color = "white";
 
 div.appendChild(text);
 
