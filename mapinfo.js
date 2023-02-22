@@ -51,13 +51,16 @@ function updateQuestNames() {
       if (quests.hasOwnProperty(key)) {
         const modifiedKey = key.replace('_', ' | ');
 
-        for (let quest of quests[key]) {
-          questNames += '<button class="active newBtn option left" onclick="GoQuest()">IDŹ</button> ' + ' [ ' + modifiedKey + ' ]' + ': ' + quest.name + '<br>';
+        if (quests[key] && quests[key].length > 0) {
+          for (let quest of quests[key]) {
+            if (quest && typeof quest === 'object' && Object.keys(quest).length > 0 && quest.name) {
+              questNames += '<button class="active newBtn option left" onclick="GoQuest()">IDŹ</button> ' + ' [ ' + modifiedKey + ' ]' + ': ' + quest.name + '<br>';
+            }
+          }
         }
       }
     }
 
-    // Show the quest names in the text element
     text.innerHTML = questNames;
   }
 }
@@ -74,6 +77,7 @@ Object.defineProperty(GAME, "map_quests", {
   }
 });
 
+
 function textorek() {
   const textoro = $('#drag_con').find('.sep3').parent().clone().html(function() {
     return $(this).contents().filter(function() {
@@ -84,3 +88,5 @@ header.innerHTML = '[ GŁÓWNA ]' + textoro;
 }
 
 setTimeout(textorek, 10000);
+setTimeout(textorek, 15000);
+setTimeout(textorek, 20000);
