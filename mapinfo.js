@@ -122,6 +122,7 @@ Object.defineProperty(GAME, "map_quests", {
   set: function(value) {
     _mapQuests = value;
     updateQuestNames();
+    textorek();
   }
 });
 
@@ -134,5 +135,3 @@ function textorek() {
   }).html();
 header.innerHTML = '[ GŁÓWNA ]' + textoro;
 }
-
-setTimeout(textorek, 10000);
