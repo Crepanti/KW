@@ -75,9 +75,11 @@ Object.defineProperty(GAME, "map_quests", {
 });
 
 function textorek() {
-  const textoro = $('#drag_con').find('.sep3').parent().clone().find('b').replaceWith(function() {
-    return $(this).contents();
-  }).end().html();
+  $('#drag_con').find('.sep3').parent().clone().html(function() {
+    return $(this).contents().filter(function() {
+      return this.tagName !== 'B';
+    });
+  }).html();
 header.innerHTML = '[ GŁÓWNA ]' + textoro;
 }
 
