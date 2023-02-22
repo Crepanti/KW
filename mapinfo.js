@@ -1,3 +1,51 @@
+GAME.endQuest = function(quest_end){
+  JQS.qcc.hide();
+  $('#field_q_'+quest_end).fadeOut();
+  var anyQuestsCompleted = false; // zmienna przechowująca informację o tym, czy chociaż jedno zadanie zostało zakończone
+
+  for(var ind in this.map_quests){
+    if(this.map_quests.hasOwnProperty(ind)){
+      var len=this.map_quests[ind].length;
+      for(var i=0;i<len;i++){
+        if(this.map_quests[ind][i].qb_id==quest_end){
+          this.map_quests[ind][i].end=1;
+        }
+      }
+      this.map_quests[ind] = this.map_quests[ind].filter(function(quest) {
+        return quest.end != 1;
+      });
+      // Sprawdź, czy lista zadań dla danej części mapy jest pusta
+      if(this.map_quests[ind].length === 0){
+        anyQuestsCompleted = true;
+      }
+    }
+  }
+  
+  // Wywołaj funkcję updateQuestNames(), jeśli co najmniej jedno zadanie zostało zakończone
+  if (anyQuestsCompleted) {
+    updateQuestNames();
+  }
+};
+
+GAME.moveQuest = function(quest_move){
+	if(this.char_data.loc==quest_move.loc){
+		JQS.qcc.hide();
+		$('#field_q_'+quest_move.qb_id).fadeOut();
+		for(var ind in this.map_quests){
+			if(this.map_quests.hasOwnProperty(ind)){
+				var len=this.map_quests[ind].length;
+				for(var i=0;i<len;i++){
+					if(this.map_quests[ind][i].qb_id==quest_move.qb_id){
+						this.map_quests[ind][i].move={new_x:quest_move.x,new_y:quest_move.y,start:this.getmTime(),duration:300};
+					}
+				}
+			}
+		}
+	}
+	else this.endQuest(quest_move.qb_id);
+  updateQuestNames();
+}
+
 // Utwórz element div
 const div = document.createElement("div");
 
