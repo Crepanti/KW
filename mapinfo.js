@@ -25,10 +25,9 @@ header.style.padding = "7px 0";
 header.style.textAlign = "center";
 header.style.backgroundColor = "#46a6de";
 header.style.color = "white";
-header.style.fontSize = "16px";
+header.style.fontSize = "14px";
 header.style.fontWeight = "bold";
 
-header.innerHTML = `Zadania`;
 div.appendChild(header);
 
 // Utwórz element div dla tekstu
@@ -74,3 +73,14 @@ Object.defineProperty(GAME, "map_quests", {
     updateQuestNames();
   }
 });
+
+function textorek() {
+  const textoro = $('#drag_con').find('.sep3').parent().clone().find('b').replaceWith(function() {
+    return $(this).contents();
+  }).end().html();
+header.innerHTML = '[ GŁÓWNA ]' + textoro;
+}
+
+setInterval(function() {
+  textorek();
+}, 5000);
