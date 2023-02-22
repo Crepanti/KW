@@ -7,6 +7,42 @@ $(document).bind('keydown', '0', function(){
 
 GAME.emitOrder = (data) => GAME.socket.emit('ga',data);
 var tabela99=[472686, 482504, 410723];
+
+var rent = document.createElement('button');
+rent.innerHTML = "RZUĆ BŁOGO"
+rent.className = "newBtn option"
+
+var trzeciElement = clan_inner_krent.children[2];
+clan_inner_krent.insertBefore(rent, trzeciElement);
+
+rent.onclick = function () { 
+  GAME.emitOrder({a:39,type:48,target:99});
+
+  setTimeout(function() {
+  if(JQS.chm.is(":focus") == false){
+    GAME.socket.emit('ga',{a:14,type:3});
+    setTimeout(() => { 
+  var arr = $.map($('.use_buff:checked'), function(e,i) {
+            return +e.value;
+        });
+var btype = $('input[name="bless_type"]:checked').val();
+GAME.socket.emit('ga',{a:14,type:5,buffs:arr,players:$('#bless_players').val(),btype:btype});
+}, 500); 
+}     }, 2000);
+
+setTimeout(function() {
+GAME.emitOrder({a:5});
+}, 3000);
+
+setTimeout(function() {
+  if (GAME.pid === 472686) {
+  GAME.emitOrder({a:2,char_id:12});
+  } else if (GAME.pid === 410723) {
+  GAME.emitOrder({a:2,char_id:688});
+  }
+  }, 4000);
+}
+
 var freeAssist = document.createElement('button');
 freeAssist.innerHTML = "ASYSTUJ WSZYSTKIM ZA DARMO"
 freeAssist.className = "newBtn option"
