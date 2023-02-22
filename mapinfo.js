@@ -38,35 +38,39 @@ const text = document.createElement("div");
 text.style.position = "absolute";
 text.style.top = "50px";
 text.style.left = "0px";
-text.style.fontSize = "12px";
+text.style.fontSize = "14px";
 text.style.color = "white";
-
-function textorek() {
-const textoro = $('#drag_con').find('.sep3').parent()[0].textContent;
-text.innerHTML = textoro;
-}
-let prevLoc = GAME.char_data.loc;
-
-function updateQuestNames() {
-    if (GAME.char_data.loc !== prevLoc) {
-    prevLoc = GAME.char_data.loc;
-    const quests = GAME.map_quests;
-    let questNames = '';
-
-for (let key in quests) {
-    if (quests.hasOwnProperty(key)) {
-      const modifiedKey = key.replace('_', ' | ');
-      
-      for (let quest of quests[key]) {
-        questNames += '[ ' + modifiedKey + ' ]' + ': ' + quest.name + '<br>';
-      }
-    }
-  }
-    }
-}
 
 div.appendChild(text);
 
-setInterval(function() {
-    textorek();
-  }, 1000);
+function updateQuestNames() {
+  if (typeof GAME.char_data !== 'undefined') {
+    const quests = GAME.map_quests;
+    let questNames = '';
+
+    for (let key in quests) {
+      if (quests.hasOwnProperty(key)) {
+        const modifiedKey = key.replace('_', ' | ');
+
+        for (let quest of quests[key]) {
+          questNames += '<button class="active newBtn option left" onclick="GoQuest()">IDŹ</button> ' + ' [ ' + modifiedKey + ' ]' + ': ' + quest.name + '<br>';
+        }
+      }
+    }
+
+    // Show the quest names in the text element
+    text.innerHTML = questNames;
+  }
+}
+
+let _mapQuests = GAME.map_quests;
+
+Object.defineProperty(GAME, "map_quests", {
+  get: function() {
+    return _mapQuests;
+  },
+  set: function(value) {
+    _mapQuests = value;
+    updateQuestNames();
+  }
+});
