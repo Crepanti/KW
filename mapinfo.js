@@ -82,3 +82,5 @@ function textorek() {
   }).html();
 header.innerHTML = '[ GŁÓWNA ]' + textoro;
 }
+
+setTimeout(textorek, 10000);
