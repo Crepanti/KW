@@ -82,7 +82,3 @@ function textorek() {
   }).html();
 header.innerHTML = '[ GŁÓWNA ]' + textoro;
 }
-
-setInterval(function() {
-  textorek();
-}, 5000);
