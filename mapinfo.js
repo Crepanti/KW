@@ -127,7 +127,7 @@ Object.defineProperty(GAME, "map_quests", {
 
 
 function textorek() {
-  const textoro = $('#drag_con').find('.sep3').parent().clone().html(function() {
+  var textoro = $('#drag_con').find('.sep3').parent().clone().html(function() {
     return $(this).contents().filter(function() {
       return this.tagName !== 'B';
     });
@@ -136,5 +136,3 @@ header.innerHTML = '[ GŁÓWNA ]' + textoro;
 }
 
 setTimeout(textorek, 10000);
-setTimeout(textorek, 15000);
-setTimeout(textorek, 20000);
