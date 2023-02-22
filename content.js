@@ -21,6 +21,47 @@ freeAssist.onclick = function () {
     GAME.emitOrder({a:39,type:55,tid:$(el).data('tid'),target:$(el).data('target')})
   }, 50)
 }
+
+var buttonNames = ["Yana", "Belgor", "Mona", "Luna", "Mun",
+                   "Karad", "Zun", "Behej", "Freezer", "Vegeta",
+                   "Flora", "Syrius", "Casjo", "Zorda", "Rebel",
+                   "Achaja", "Orestes", "Eurynia", "Pallas", "Corsar"];
+
+for (var i = 1; i <= 20; i++) {
+  var podboj = document.createElement('button');
+  podboj.innerHTML = buttonNames[i-1];
+  podboj.className = "newBtn option";
+
+  var planetNum = i;
+
+  var drugiElement = clan_inner_planets.children[planetNum];
+  clan_inner_planets.insertBefore(podboj, drugiElement);
+
+  podboj.onclick = (function(planetNum) {
+    return function() {
+      podbojFunction(planetNum);
+    }
+  })(planetNum);
+}
+
+function podbojFunction(planetNum) {
+    setTimeout(function() {
+    GAME.emitOrder({a:39,type:36,planet: planetNum }); // Planeta
+    }, 1000);
+    
+    setTimeout(function() {
+    GAME.emitOrder({a:39,type:38,target:12}); // Postać
+    }, 2000);
+    
+    setTimeout(function() {
+    GAME.emitOrder({a:39,type:39}); // Teleportuj
+    }, 3000);
+    
+    setTimeout(function() {
+    GAME.emitOrder({a:39,type:40,planet: planetNum }); // INVADE
+    }, 4000);
+}
+
 $(document).bind('keydown', '3', function(){
     if(JQS.chm.is(":focus") == false){
         GAME.socket.emit('ga',{a:14,type:3});
