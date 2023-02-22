@@ -83,7 +83,7 @@ const text = document.createElement("div");
 
 // Ustaw styl elementu text
 text.style.position = "absolute";
-text.style.top = "50px";
+text.style.top = "60px";
 text.style.left = "0px";
 text.style.fontSize = "14px";
 text.style.color = "white";
