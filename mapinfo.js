@@ -86,7 +86,7 @@ text.style.position = "absolute";
 text.style.top = "60px";
 text.style.left = "0px";
 text.style.fontSize = "14px";
-text.style.color = "white";
+text.style.color = "rgba(20, 20, 19)";
 
 div.appendChild(text);
 
