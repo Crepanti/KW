@@ -8,6 +8,27 @@ $(document).bind('keydown', '0', function(){
 GAME.emitOrder = (data) => GAME.socket.emit('ga',data);
 var tabela99=[472686, 482504, 410723];
 
+var buffki = document.createElement('button');
+buffki.innerHTML = "ODPAL BUFFY"
+buffki.className = "newBtn option"
+
+var czwartyElement = clan_inner_wars.children[8];
+clan_inner_wars.insertBefore(buffki, czwartyElement);
+
+buffki.onclick = function () { 
+  let bufki = setInterval(() => {
+    if(GAME.char_id == 0){
+    } else if(GAME.klan_data==undefined){
+      GAME.emitOrder({a:39,type:0});
+    } else if(GAME.klan_data.war_buff == 18){
+      clearInterval(bufki);
+    } else if(GAME.klan_data.war_buff < 18 && GAME.clan_laws.buffer==1){
+      GAME.emitOrder({a:39,type:26});
+    } else { 
+    }
+  }, 100);
+}
+
 var rent = document.createElement('button');
 rent.innerHTML = "RZUĆ BŁOGO"
 rent.className = "newBtn option"
