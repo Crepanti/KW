@@ -135,3 +135,7 @@ function textorek() {
   }).html();
 header.innerHTML = '[ GŁÓWNA ]' + textoro;
 }
+
+if (typeof textoro === 'undefined' || textoro === '') {
+  textorek();
+}
