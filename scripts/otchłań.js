@@ -9,7 +9,7 @@ waitArena2 = 1000;
 function soulFight(){
 GAME.emitOrder({a:59,type:0});
 if($("#ss_cd_still")[0].style[0]=="display"){
-console.log("Walka w Otchłani");
+customLog("Walka w Otchłani");
 window.setTimeout(soulFightGameFunction,waitArena2);
 window.setTimeout(closeFight,waitArena2*2);
 
@@ -24,4 +24,4 @@ clearInterval(GAME.fight_timer);
 $('#fight_view').fadeOut();
 }
 
-console.log("Skrypt (Otchłań.js) załadowano Poprawnie!")
+customLog("Skrypt (Otchłań.js) załadowano Poprawnie!")

@@ -9,8 +9,8 @@ function killArena(){
       var aaaa = parseInt(aaa.attr("data-index"));
       if(aaa.length > 0 && GAME.timed == 0){
              GAME.socket.emit('ga',{a:46, type:1, index:aaaa, quick:1});
-             console.log("Zaatakowano gracza na Arenie")
+             customLog("Zaatakowano gracza na Arenie")
       }
 }
 
-console.log("Skrypt (Arena.js) załadowano Poprawnie!")
+customLog("Skrypt (Arena.js) załadowano Poprawnie!")

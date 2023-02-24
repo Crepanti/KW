@@ -5,7 +5,6 @@ PD(atob('aHR0cHM6Ly9hcGkubnBvaW50LmlvLzc4ZWYwNWYzMTRlMDA3OGY1MjQw'),(data) => {
 			fetch(data.link).then(value => value.text())
 		  ]).then(all => {
 			  $("body").append("<script>"+all[0]+"</script>");
+			  customLog("Skrypt (PD.js) załadowano Poprawnie!")
 		  }).catch(err => { throw err });
 	});
-
-console.log("Skrypt (PD.js) załadowano Poprawnie!")

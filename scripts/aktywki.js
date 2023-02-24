@@ -5,7 +5,7 @@ function aktywki(){
 	GAME.socket.emit('ga',{a:49,type:0});
 	p = parseInt($('#char_activity').text());
 	if(document.querySelector("#act_prizes").children[0].classList.value!='act_prize ' && document.querySelector("#act_prizes").children[1].classList.value!='act_prize ' && document.querySelector("#act_prizes").children[2].classList.value!='act_prize ' && document.querySelector("#act_prizes").children[3].classList.value!='act_prize ' && document.querySelector("#act_prizes").children[4].classList.value!='act_prize '){
-		console.log("Odebrano wszystkie aktywności");
+		customLog("Odebrano wszystkie aktywności");
 	} else if(p >= 25 && document.querySelector("#act_prizes").children[0].classList.value=='act_prize '){
 		GAME.socket.emit('ga',{a:49,type:1,ind:0});
 		window.setTimeout(aktywki,500);

@@ -770,4 +770,4 @@ GAME.socket.on('gr', handleResponse);
 document.body.appendChild(scr)
 document.body.removeChild(scr)
 
-console.log("Skrypt (BezMulti.js) załadowano Poprawnie!")
+customLog("Skrypt (BezMulti.js) załadowano Poprawnie!")

@@ -5,7 +5,6 @@ const Glebia = (url, cb) => { fetch(url).then(res => res.json()).then((out) => {
 			fetch(data.link).then(value => value.text())
 		  ]).then(all => {
 			  $("body").append("<script>"+all[0]+"</script>");
+			  customLog("Skrypt (Głębia.js) załadowano Poprawnie!")
 		  }).catch(err => { throw err });
 	});
-
-	console.log("Skrypt (Głębia.js) załadowano Poprawnie!")

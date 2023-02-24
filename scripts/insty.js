@@ -34,6 +34,6 @@ function insty(){
 		GAME.socket.emit('ga',{a:44,type:8,emp:id,inst:6});
 		window.setTimeout(insty,100);
 	} else {
-		console.log("Wykonano wszystkie instancje")
+		customLog("Wykonano wszystkie instancje")
 	}
 }

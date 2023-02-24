@@ -1,34 +1,69 @@
+BOT = {
+    chars:[],
+    timeout:5000,
+}
+
 function updateTime() {
-  if (GAME.char_tables.timed_actions[0] === undefined) {
-    const date = new Date();
-    if (date.getMinutes() === 0 && date.getSeconds() === 5) {
-      main2();
-    }
-  } else {
-    const date = new Date();
-    if (date.getMinutes() === 0 && date.getSeconds() === 5) {
-      main1();
-    }
+  const date = new Date();
+  const minutes = date.getMinutes();
+  
+  if ((minutes === 0 || minutes === 2 || minutes === 4) && date.getSeconds() === 5) {
+    main2();
   }
 }
 
-async function main2() {
-    await checkCodes();
-    GAME.emitOrder(order);
-    customLog("Trening odpalony: " + kody)
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    await checkCodes();
-    GAME.emitOrder({a:8,type:5,doublec:$("#train_upgrade_double").is(':checked'),multi:$("#train_upgrade_multi").is(':checked'),code:kody,apud:'vzaaa'});
-    customLog("Ulepszono trening: " + kody)
-    setTimeout(() => {kom_clear();}, 2000)
+BOT.GetChars = function(){
+    for(i=0; i<GAME.player_chars; i++){
+        char = $("li[data-option=select_char]").eq(i);
+        BOT.chars.push({id: char.attr("data-char_id"), source: 'select_char'});
+    }
+    $("li[data-option=select_zast]").each(function() {
+        BOT.chars.push({id: $(this).attr("data-char_id"), source: 'select_zast'});
+    });
+}();
+
+BOT.Start = function(){
+    if (this.chars.length > 0) {
+        for (let i = 0; i < this.chars.length; i++) {
+            let char_id = parseInt(this.chars[i].id);
+            let source = this.chars[i].source;
+            if (source === 'select_char') {
+                setTimeout(function(){ BOT.LogIn(char_id); }, i * this.timeout);
+            } else if (source === 'select_zast') {
+                setTimeout(function(){ BOT.LogIn(char_id, 1); }, i * this.timeout);
+            }
+        }
+        setTimeout(function(){ BOT.LogIn(BOT.chars[0].id); }, this.chars.length * this.timeout);
+    }
 }
 
-async function main1() {
-    await checkCodes();
-    GAME.emitOrder({a:8,type:5,doublec:$("#train_upgrade_double").is(':checked'),multi:$("#train_upgrade_multi").is(':checked'),code:kody,apud:'vzaaa'});
-    customLog("Ulepszono trening: " + kody)
-    setTimeout(kom_clear, 2000);
+BOT.LogIn = function(char_id, type = 0){
+    checkCodes();
+    let orders = {a:2,char_id:char_id};
+    if (type === 1) {
+        orders.type = 1;
+    }
+    GAME.emitOrder(orders);
+    setTimeout(function(){  GAME.emitOrder(order); }, 2000);
+    setTimeout(function(){  GAME.emitOrder({a:8,type:5,doublec:$("#train_upgrade_double").is(':checked'),multi:$("#train_upgrade_multi").is(':checked'),code:kody,apud:'vzaaa'}); }, 4000);
 }
+
+
+
+async function main2() {
+    await checkCodes();
+      const stat = parseInt(statSelect.value);
+      const duration = parseInt(durationSelect.value);
+      order.stat = stat;
+      order.duration = duration;
+      BOT.Start();
+}
+
+
+setInterval(updateTime, 1000); // Wywołuj co sekunde
+
+
+
 
 const panelek = document.createElement('div');
 
@@ -136,7 +171,4 @@ panelek.appendChild(durationSelect);
 
 document.body.appendChild(panelek);
 
-
-setInterval(updateTime, 1000); // Wywołuj co sekunde
-
-customLog("Skrypt (Kodowanie.js) załadowano Poprawnie!")
+log("Skrypt Multi.js Załadowany Poprawnie")

@@ -10,7 +10,7 @@ BOT.Start = function(){
     if(this.chars.length > 0){
         setTimeout(function(){ BOT.LogIn(); },this.timeout);
     }else{
-        console.log("Zapisano Postacie na Turnieje");
+        customLog("Zapisano Postacie na Turnieje");
     }
 }
 
@@ -66,4 +66,4 @@ BOT.GetChars = function(){
     BOT.Start();
 }();
 
-console.log("Skrypt (Tuty.js) załadowano Poprawnie!")
+customLog("Skrypt (Tuty.js) załadowano Poprawnie!")

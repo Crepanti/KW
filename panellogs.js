@@ -1,9 +1,9 @@
 var logi = "";
 var resetBtn = null;
 
-customLog = function(message) {
+customLog = function(message, color) {
   logtime = $('#server_time').text();
-  logi = `<span style="padding-left: 10px;">${logtime}: ` + message + `<br></span>` + logi;
+  logi = `<span style="padding-left: 10px; color: ${color};">${logtime}: ` + message + `<br></span>` + logi;
   content.innerHTML = `> <span style="color: white;">${logi}</span>`;
 };
 
