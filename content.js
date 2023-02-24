@@ -29,6 +29,13 @@ buffki.onclick = function () {
   }, 100);
 }
 
+GAME.socket.on('gr', function(res){
+  switch(res.a){
+      case 40:
+        if(res.klan_data) GAME.parseClanData(res,5);
+        console.log(res)
+  }});
+
 var rent = document.createElement('button');
 rent.innerHTML = "RZUĆ BŁOGO"
 rent.className = "newBtn option"
