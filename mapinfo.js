@@ -136,6 +136,8 @@ function textorek() {
 header.innerHTML = '[ GŁÓWNA ]' + textoro;
 }
 
-if (typeof textoro === 'undefined' || textoro === '') {
-  textorek();
-}
+setInterval(function() {
+  if (typeof textoro === 'undefined' || textoro === '') {
+    textorek();
+  }
+}, 30000);
