@@ -1,6 +1,6 @@
 $(document).bind('keydown', '0', function(){
     if(JQS.chm.is(":focus") == false){
-      console.log("Legenda: Klawisz 1- start/stop, 2-tp PP, 3-błogo, 4-odbieranie vip, N-zegarki, B-pvp, X-opcja dalej, zamykanie raportów/komunikatów, zbieranie")
+      customLog("Legenda: Klawisz 1- start/stop, 2-tp PP, 3-błogo, 4-odbieranie vip, N-zegarki, B-pvp, X-opcja dalej, zamykanie raportów/komunikatów, zbieranie")
     }
     return false;
 });
@@ -328,7 +328,7 @@ if(GAME.char_data.gvip_score>=0 && checkkkk){
     GAME.socket.emit('ga',{a:54,type:1,vip:1,level:lvl1});
     window.setTimeout(vip,100);
 } else {
-    console.log("Odebrano wszystkie możliwe nagrody z Vipa!!!")
+  customLog("Odebrano wszystkie możliwe nagrody z Vipa!!!")
 }
 }
 $("#bless_type_2").click();
