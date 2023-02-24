@@ -1,7 +1,7 @@
 var logi = "";
 var resetBtn = null;
 
-console.log = function(message) {
+konsole.log = function(message) {
   logtime = $('#server_time').text();
   logi = `<span style="padding-left: 10px;">${logtime}: ` + message + `<br></span>` + logi;
   content.innerHTML = `> <span style="color: white;">${logi}</span>`;
