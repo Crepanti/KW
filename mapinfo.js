@@ -90,6 +90,8 @@ text.style.color = "white";
 
 div.appendChild(text);
 
+questCoordinates = [];
+
 function updateQuestNames() {
   if (typeof GAME.char_data !== 'undefined') {
     const quests = GAME.map_quests;
@@ -98,11 +100,15 @@ function updateQuestNames() {
     for (let key in quests) {
       if (quests.hasOwnProperty(key)) {
         const modifiedKey = key.replace('_', ' | ');
-
+        parts = modifiedKey.split(" | ");
+        const x = parts[0]; // X
+        const y = parts[1]; // Y
+        questCoordinates[key] = { x, y };
+    
         if (quests[key] && quests[key].length > 0) {
           for (let quest of quests[key]) {
             if (quest && typeof quest === 'object' && Object.keys(quest).length > 0 && quest.name) {
-              questNames += '<button class="active newBtn option left" onclick="GoQuest()">IDŹ</button> ' + ' [ ' + modifiedKey + ' ]' + ': ' + quest.name + '<br>';
+              questNames += '<button class="active newBtn option left" onclick="goQuest(' + x + ', ' + y + ')">IDŹ</button> ' + ' [ ' + x + ' | ' + y + ' ]' + ': ' + quest.name + '<br>';
             }
           }
         }
@@ -110,6 +116,25 @@ function updateQuestNames() {
     }
 
     text.innerHTML = questNames;
+  }
+}
+
+
+function goQuest(x, y) {
+  if (GAME.char_data.x !== x || GAME.char_data.y !== y) {
+    if (GAME.char_data.x > x) {
+      GAME.map_move(8); // Poruszanie się w lewo
+    } else if (GAME.char_data.x < x) {
+      GAME.map_move(7); // Poruszanie się w prawo
+    } else if (GAME.char_data.y > y) {
+      GAME.map_move(2); // Poruszanie się w górę
+    } else if (GAME.char_data.y < y) {
+      GAME.map_move(1); // Poruszanie się w dół
+    }
+    
+    setTimeout(function() {
+      goQuest(x, y);
+    }, 50);
   }
 }
 
