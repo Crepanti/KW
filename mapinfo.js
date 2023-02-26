@@ -152,13 +152,18 @@ Object.defineProperty(GAME, "map_quests", {
 });
 
 
+var isCopied = false;
+
 function textorek() {
-  var textoro = $('#drag_con').find('.sep3').parent().clone().html(function() {
-    return $(this).contents().filter(function() {
-      return this.tagName !== 'B';
-    });
-  }).html();
-header.innerHTML = '[ GŁÓWNA ]' + textoro;
+  if (isCopied) return; // jeśli już skopiowano, to nie kopiuj ponownie
+  
+  var $elements = $('#drag_con').find('.sep3').parent().clone();
+  $elements.find('b').remove(); // usuń elementy <b>
+  
+  var textoro = $elements.html();
+  header.innerHTML = '[ GŁÓWNA ]' + textoro;
+  
+  isCopied = true; // ustaw flagę na true, aby uniknąć duplikacji
 }
 
 setInterval(function() {
