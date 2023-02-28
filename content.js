@@ -29,13 +29,46 @@ buffki.onclick = function () {
   }, 100);
 }
 
-GAME.socket.on('gr', function(res){
-  switch(res.a){
-      case 40:
-        if(res.klan_data) GAME.parseClanData(res,5);
-        console.log(res)
-  }});
 
+
+var warLimit = 0
+let res = [];
+
+GAME.socket.on('gr', function(response){
+  switch(response.a){
+      case 40:
+        if(response.klan_data) GAME.parseClanData(response,5);
+        for (let i = 0; i < res.length; i++) {
+            if (res[i].a === response.a) {
+                res[i] = response;
+                updateClanStats(res[0].klan_data.war_limit);
+                return;
+            }
+        }
+        res.push(response);
+        updateClanStats(res[0].klan_data.war_limit);
+        warLimit = res[0].klan_data.war_limit
+  }
+});
+
+const newRow = document.createElement("tr");
+  
+const labelCell = document.createElement("td");
+labelCell.innerText = "Fragi dziś: ";
+  
+const valueCell = document.createElement("td");
+valueCell.innerText = warLimit;
+  
+newRow.appendChild(labelCell);
+newRow.appendChild(valueCell);
+  
+const table = document.querySelector(".clan_stats table");
+table.appendChild(newRow);
+
+function updateClanStats(warLimit) {
+      valueCell.innerText = warLimit;
+}
+  
 var rent = document.createElement('button');
 rent.innerHTML = "RZUĆ BŁOGO"
 rent.className = "newBtn option"
