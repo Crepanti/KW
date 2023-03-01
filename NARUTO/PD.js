@@ -103,19 +103,16 @@ function updateTime() {
 
   if (kodyse && date.getMinutes() === 59 && (date.getSeconds() === 50)) {
     stop = true;
-    customLog(`Próba wstrzymania skryptu`);
   }
 }
 
 async function main5() {
   stop = true
-  customLog("Bot Wstrzymany", "red")
 
   await checkCodes();
 
   setTimeout(() => {
     GAME.emitOrder({a:8,type:2,stat:1,duration:1,code:kody});
-    customLog("Trening odpalony: " + kody);
     }, 3000);
 
   setTimeout(async () => {
@@ -131,7 +128,6 @@ async function main5() {
     code: kody,
     apud: 'vzaaa'
     });
-    customLog("Ulepszono trening: " + kody);
     }, 8000);
 
   setTimeout(() => {
@@ -144,7 +140,6 @@ async function main5() {
 
   setTimeout(() => {
     stop = false;
-    customLog("Bot Wznowiony", "green");
     }, 13000);
 
     setTimeout(() => {
@@ -755,4 +750,3 @@ function check() {
 start()
 
 setInterval(() => { updateTime()}, 1000);
-customLog("Skrypt (Planetarne.js) załadowano Poprawnie!")
