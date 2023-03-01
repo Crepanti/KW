@@ -1,3 +1,5 @@
+let arenaAttempts = 1;
+
 var arenaxxx = setInterval(() => {
       killArena();
        }, 2000 * 1 * 1);
@@ -9,8 +11,9 @@ function killArena(){
       var aaaa = parseInt(aaa.attr("data-index"));
       if(aaa.length > 0 && GAME.timed == 0){
              GAME.socket.emit('ga',{a:46, type:1, index:aaaa, quick:1});
-             customLog("Zaatakowano gracza na Arenie")
+             customLog(`Zaatakowano gracza na Arenie (x${arenaAttempts})`)
+             arenaAttempts++;
       }
 }
 
-customLog("Skrypt (Arena.js) załadowano Poprawnie!")
+customLog(`Skrypt (Arena.js) załadowano Poprawnie!`)

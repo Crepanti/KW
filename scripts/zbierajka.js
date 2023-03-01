@@ -14,10 +14,10 @@ var BOT = {
   refresh_mines: true,
 }
 $('body').append(
-  '<div id="BOT_control" style="display:none; min-width:100px; padding:5px; border:solid gray 1px; background:rgba(22, 22, 93, 0.81); color:gold; position: fixed; top: 40px; right: 5px; z-index:5;"><div class="bt_button" style="cursor:pointer;text-align:center; border-bottom:solid gray 1px;">START</div><div class="bt_refresh" style="cursor:pointer;text-align:center; border-bottom:solid gray 1px;">ODŚWIEŻ</div><div class="bt_cool" style="text-align:center;"></div></div>'
+  '<div id="BOT_control" style="display:none; min-width:100px; padding:5px; border:solid white 3px; background:black; color:white; position: fixed; top: 40px; right: 5px; z-index:5;"><div class="bt_button" style="cursor:pointer;text-align:center;">START</div><div class="bt_refresh" style="cursor:pointer;text-align:center;">ODŚWIEŻ</div><div class="bt_cool" style="text-align:center;"></div></div>'
 )
 $('body').append(
-  '<div id="BOT_mines" style="display:none; min-width:100px; padding:5px; border:solid gray 1px; background:rgba(22, 22, 93, 0.81); color:gold; position: fixed; top: 120px; right: 5px; z-index:5;"></div>'
+  '<div id="BOT_mines" style="display:none; min-width:100px; padding:5px; border:solid white 3px; background:black; color:white; position: fixed; top: 120px; right: 5px; z-index:5;"></div>'
 )
 $('#BOT_control .bt_button').click(() => {
   BOT.stop

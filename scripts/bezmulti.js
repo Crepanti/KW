@@ -133,7 +133,7 @@ var gk=GAME.pid;
 
 
 /* TEMPLATE */
-const $css = "#gh_game_helper {min-width:150px; padding:10px; border:solid gray 1px; background:rgba(22, 22, 93, 0.81); color:gold; position: fixed; top: 40px; right: 5px; z-index:5;}#gh_game_helper .gh_button {cursor:pointer;text-align:center; border-bottom:solid gray 1px;}";
+const $css = "#gh_game_helper {min-width:100px; padding:10px; border:solid white 3px; background:black; color:white; position: fixed; top: 40px; right: 5px; z-index:5;}#gh_game_helper .gh_button {cursor:pointer;text-align:center;}";
 
 const $html = "<div class='gh_button gh_exp'>EXP <b class='gh_status red'>Off</b></div><div class='gh_button gh_xost'>xOst <b class='gh_status red'>Off</b></div><div class='gh_button gh_x20'>x20 <b class='gh_status red'>Off</b></div>";
 

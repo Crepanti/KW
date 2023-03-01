@@ -114,9 +114,9 @@ let collectedCSK = 0
 
 // -----------------------------------
 /* TEMPLATE */
-const $css = "#gh_game_helper {min-width:100px; padding:5px; border:solid gray 1px; background:rgba(22, 22, 93, 0.81); color:gold; position: fixed; top: 40px; right: 5px; z-index:5;}#gh_game_helper .gh_button {cursor:pointer;text-align:center; border-bottom:solid gray 1px;}";
+const $css = "#gh_game_helper {min-width:100px; padding:5px; border:solid white 3px; background:black; color:white; position: fixed; top: 40px; right: 5px; z-index:5;}#gh_game_helper .gh_button {cursor:pointer;text-align:center;}";
 
-const $html = "<div class='gh_button gh_exp'>Exp <b class='gh_status red'>Off</b></div>";
+const $html = "<div class='gh_button gh_exp'>Exp <b class='gh_status red'>Off</b></div><div class='gh_button gh_fast'>Speed <b class='gh_status red'>Off</b></div>";
 
 $('body').append("<div id='gh_game_helper'>"+$html+"</div>").append("<style>"+$css+"</style>");
 
@@ -133,6 +133,19 @@ $('#gh_game_helper .gh_exp').click(() => {
 		stop = true
 	}
 });
+
+$('#gh_game_helper .gh_fast').click(() => {
+	if (wait2) {
+		$('#gh_game_helper .gh_fast')
+		$(".gh_fast .gh_status").removeClass("red").addClass("green").html("On");
+		wait2 = 0; // modified this line
+	} else {
+		$('#gh_game_helper .gh_fast')
+		$(".gh_fast .gh_status").removeClass("green").addClass("red").html("Off");
+		wait2 = 15; // modified this line
+	}
+});
+
 // -----------------------------------
 
 // -----------------------------------
@@ -692,4 +705,4 @@ function handleResponse (res) {
 
 GAME.socket.on('gr', handleResponse);
 
-console.log("Skrypt (TutyExp.js) załadowano Poprawnie!")
+customLog("Skrypt (TutyExp.js) załadowano Poprawnie!")
