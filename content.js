@@ -119,6 +119,11 @@ freeAssist.onclick = function () {
   }, 50)
 }
 
+setInterval(function() {
+  freeAssist.click()
+}, 60000 * 20);
+
+
 var buttonNames = ["Yana", "Belgor", "Mona", "Luna", "Mun",
                    "Karad", "Zun", "Behej", "Freezer", "Vegeta",
                    "Flora", "Syrius", "Casjo", "Zorda", "Rebel",
