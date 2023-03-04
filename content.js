@@ -149,15 +149,15 @@ for (var i = 1; i <= 20; i++) {
 function podbojFunction(planetNum, countdown) {
     setTimeout(function() {
         GAME.emitOrder({a:39,type:36,planet: planetNum }); // Planeta
-    }, 500);
+    }, 750);
 
     setTimeout(function() {
         GAME.emitOrder({a:39,type:38,target:12}); // Postać
-    }, 1000);
+    }, 1500);
 
     setTimeout(function() {
         GAME.emitOrder({a:39,type:39}); // Teleportuj
-    }, 1500);
+    }, 2250);
 
     setTimeout(function() {
         GAME.emitOrder({a:39,type:40,planet: planetNum }); // INVADE
@@ -171,7 +171,7 @@ function podbojFunction(planetNum, countdown) {
                 countdown.innerHTML = "";
             }
         }, 1000);
-    }, 2000);
+    }, 3000);
 }
 
 
