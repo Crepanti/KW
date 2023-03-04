@@ -125,55 +125,55 @@ var buttonNames = ["Yana", "Belgor", "Mona", "Luna", "Mun",
                  "Achaja", "Orestes", "Eurynia", "Pallas", "Corsar"];
 
 for (var i = 1; i <= 20; i++) {
-var podboj = document.createElement('button');
-podboj.innerHTML = buttonNames[i-1];
-podboj.className = "newBtn option";
+    var podboj = document.createElement('button');
+    podboj.innerHTML = buttonNames[i-1];
+    podboj.className = "newBtn option";
 
-var planetNum = i;
+    var planetNum = i;
 
-var drugiElement = clan_inner_planets.children[planetNum];
-clan_inner_planets.insertBefore(podboj, drugiElement);
+    var drugiElement = clan_inner_planets.children[planetNum];
+    clan_inner_planets.insertBefore(podboj, drugiElement);
 
-podboj.onclick = (function(planetNum) {
-  return function() {
-    podbojFunction(planetNum);
-  }
-})(planetNum);
+    var countdown = document.createElement('span');
+    countdown.id = "countdown-" + planetNum;
+    countdown.innerHTML = "";
+    podboj.parentNode.insertBefore(countdown, podboj.nextSibling);
+
+    podboj.onclick = (function(planetNum, countdown) {
+        return function() {
+            podbojFunction(planetNum, countdown);
+        }
+    })(planetNum, countdown);
 }
 
-var countdown = document.createElement('span');
-countdown.id = "countdown-" + planetNum;
-countdown.innerHTML = "";
-podboj.parentNode.insertBefore(countdown, podboj.nextSibling);
+function podbojFunction(planetNum, countdown) {
+    setTimeout(function() {
+        GAME.emitOrder({a:39,type:36,planet: planetNum }); // Planeta
+    }, 500);
 
-function podbojFunction(planetNum) {
-  setTimeout(function() {
-      GAME.emitOrder({a:39,type:36,planet: planetNum }); // Planeta
-  }, 500);
+    setTimeout(function() {
+        GAME.emitOrder({a:39,type:38,target:12}); // Postać
+    }, 1000);
 
-  setTimeout(function() {
-      GAME.emitOrder({a:39,type:38,target:12}); // Postać
-  }, 1000);
+    setTimeout(function() {
+        GAME.emitOrder({a:39,type:39}); // Teleportuj
+    }, 1500);
 
-  setTimeout(function() {
-      GAME.emitOrder({a:39,type:39}); // Teleportuj
-  }, 1500);
-
-  setTimeout(function() {
-      GAME.emitOrder({a:39,type:40,planet: planetNum }); // INVADE
-      var countdown = document.getElementById("countdown-" + planetNum);
-      var timeLeft = 10;
-      countdown.innerHTML = "Cooldown: " + timeLeft + "s";
-      var countdownInterval = setInterval(function() {
-          timeLeft--;
-          countdown.innerHTML = "Cooldown: " + timeLeft + "s";
-          if (timeLeft <= 0) {
-              clearInterval(countdownInterval);
-              countdown.innerHTML = "";
-          }
-      }, 1000);
-  }, 2000);
+    setTimeout(function() {
+        GAME.emitOrder({a:39,type:40,planet: planetNum }); // INVADE
+        var timeLeft = 10;
+        countdown.innerHTML = "Cooldown: " + timeLeft + "s";
+        var countdownInterval = setInterval(function() {
+            timeLeft--;
+            countdown.innerHTML = "Cooldown: " + timeLeft + "s";
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                countdown.innerHTML = "";
+            }
+        }, 1000);
+    }, 2000);
 }
+
 
 $(document).bind('keydown', '3', function(){
   if(JQS.chm.is(":focus") == false){
