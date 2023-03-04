@@ -119,11 +119,6 @@ freeAssist.onclick = function () {
   }, 50)
 }
 
-setInterval(function() {
-  freeAssist.click()
-}, 60000 * 20);
-
-
 var buttonNames = ["Yana", "Belgor", "Mona", "Luna", "Mun",
                    "Karad", "Zun", "Behej", "Freezer", "Vegeta",
                    "Flora", "Syrius", "Casjo", "Zorda", "Rebel",
@@ -147,22 +142,44 @@ for (var i = 1; i <= 20; i++) {
 }
 
 function podbojFunction(planetNum) {
-    setTimeout(function() {
+  var cooldownTime = 10; // czas cooldownu w sekundach
+  var elapsedTime = 0; // upłynięty czas
+  var cooldownInterval; // zmienna przechowująca identyfikator interwału
+
+  // Wyświetl informację o cooldownie na przycisku
+  podboj.innerHTML += ' (cooldown ' + cooldownTime + 's)';
+
+  setTimeout(function() {
     GAME.emitOrder({a:39,type:36,planet: planetNum }); // Planeta
-    }, 1000);
-    
-    setTimeout(function() {
+  }, 1000);
+
+  setTimeout(function() {
     GAME.emitOrder({a:39,type:38,target:12}); // Postać
-    }, 2000);
-    
-    setTimeout(function() {
+  }, 2000);
+
+  setTimeout(function() {
     GAME.emitOrder({a:39,type:39}); // Teleportuj
-    }, 3000);
-    
-    setTimeout(function() {
+  }, 3000);
+
+  setTimeout(function() {
     GAME.emitOrder({a:39,type:40,planet: planetNum }); // INVADE
-    }, 4000);
+
+    // Zmniejszaj odliczanie czasu co sekundę
+    cooldownInterval = setInterval(function() {
+      elapsedTime++;
+      var remainingTime = cooldownTime - elapsedTime;
+      if (remainingTime <= 0) {
+        // Usuń informację o cooldownie po zakończeniu odliczania czasu
+        clearInterval(cooldownInterval);
+        podboj.innerHTML = podboj.innerHTML.replace('(' + cooldownTime + ')', '');
+      } else {
+        // Wyświetl pozostały czas na przycisku
+        podboj.innerHTML = buttonNames[i-1] + '(' + remainingTime + ')';
+      }
+    }, 1000);
+  }, 4000);
 }
+
 
 $(document).bind('keydown', '3', function(){
     if(JQS.chm.is(":focus") == false){
