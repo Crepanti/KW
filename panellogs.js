@@ -1,6 +1,7 @@
 var logi = "";
 var resetBtn = null;
 
+
 customLog = function(message, color) {
   logtime = $('#server_time').text();
   var logi = localStorage.getItem('logi') || '';
@@ -9,14 +10,11 @@ customLog = function(message, color) {
   localStorage.setItem('logi', logi);
 };
 
-// przy ładowaniu strony
-window.onload = function() {
   var logi = localStorage.getItem('logi');
   customLog(`<span style="color: green;"><b>POŁĄCZONO Z SERWEREM</b></span>`)
   if (logi) {
     content.innerHTML = `> <span style="color: white;">${logi}</span>`;
-  }
-};
+}
 
 var panel = document.createElement("div");
 panel.setAttribute("id", "panel");
