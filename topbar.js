@@ -70,6 +70,9 @@ function updateTimer() {
   var active = "0";
   var akt_codes = [];
 
+  // PLANETY
+  planety = $(`#clan_inner_stelep`).find('.timer').text();
+
   try {
   active = $('#char_activity').text();
   akt_codes = [
@@ -92,6 +95,7 @@ function updateTimer() {
   newDiv.innerHTML = `
   <span class="divstyle" style="color: #46a6de;">Smocze Kule:</span> ${element} | 
   <span class="divstyle" style="color: #46a6de;">Handlarz:</span> ${handlarz} | 
+  <span class="divstyle" style="color: #46a6de;">Planety:</span> ${planety} | 
   <span class="divstyle" style="color: #46a6de;">Aktywność:</span> ${active} / ${180} (${received}/${5}) | 
   <span class="divstyle" style="color: #46a6de;">Instancje:</span> ${sum} / ${12} | 
   <span class="divstyle" style="color: #46a6de;">Ping:</span> <span id="latencyy">${latency}</span>
@@ -113,8 +117,8 @@ GAME.cached_data = function() {
       type: 0
     },
     {
-      a: 18, // Techniki
-      type: 1
+      a: 39, // Klan
+      type: 0
     }
   ];
   var pos = $('#char_buffs').offset();
