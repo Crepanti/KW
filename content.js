@@ -6,6 +6,7 @@ $(document).bind('keydown', '0', function(){
 });
 
 GAME.emitOrder = (data) => GAME.socket.emit('ga',data);
+
 var tabela99=[472686, 482504, 410723];
 
 var buffki = document.createElement('button');
@@ -20,16 +21,22 @@ let bufki = setInterval(() => {
   if(GAME.char_id == 0){
   } else if(GAME.klan_data==undefined){
     GAME.emitOrder({a:39,type:0});
-  } else if(GAME.klan_data.war_buff == 18){
+  } else if(GAME.klan_data.war_buff == 20){
     clearInterval(bufki);
-  } else if(GAME.klan_data.war_buff < 18 && GAME.clan_laws.buffer==1){
+  } else if(GAME.klan_data.war_buff < 20 && GAME.clan_laws.buffer==1){
     GAME.emitOrder({a:39,type:26});
   } else { 
   }
 }, 100);
 }
 
-
+GAME.socket.on('disconnect', function(disconnect) {
+  customLog(`<span style="color: red;"><b>ROZŁĄCZONO Z SERWEREM!!!</b></span>`)
+  });
+  
+  GAME.socket.on('connect', function(connect) {
+  customLog(`<span style="color: green;"><b>POŁĄCZONO Z SERWEREM</b></span>`)
+  });
 
 var warLimit = 0
 let res = [];
