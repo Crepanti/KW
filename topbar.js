@@ -118,7 +118,7 @@ GAME.cached_data = function() {
     },
     {
       a: 39, // Klan
-      type: 0
+      type: 35
     }
   ];
   var pos = $('#char_buffs').offset();
