@@ -62,9 +62,12 @@ resetBtn.style.width = "30px";
 resetBtn.style.height = "30px";
 resetBtn.style.textAlign = "center";
 resetBtn.style.cursor = "pointer";
+
 resetBtn.addEventListener("click", function() {
   logtime = $('#server_time').text();
   logi = "";
   content.innerHTML = `> <span style="color: white;">${logtime}: Logi Wyczyszczone</span>`;
+  localStorage.removeItem('logi');
 });
+
 panel.appendChild(resetBtn);
