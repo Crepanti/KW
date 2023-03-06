@@ -17,6 +17,7 @@ window.onload = function() {
   }
 };
 
+customLog(`<span style="color: green;"><b>POŁĄCZONO Z SERWEREM</b></span>`)
 
 var panel = document.createElement("div");
 panel.setAttribute("id", "panel");
