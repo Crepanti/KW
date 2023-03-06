@@ -12,12 +12,11 @@ customLog = function(message, color) {
 // przy ładowaniu strony
 window.onload = function() {
   var logi = localStorage.getItem('logi');
+  customLog(`<span style="color: green;"><b>POŁĄCZONO Z SERWEREM</b></span>`)
   if (logi) {
     content.innerHTML = `> <span style="color: white;">${logi}</span>`;
   }
 };
-
-customLog(`<span style="color: green;"><b>POŁĄCZONO Z SERWEREM</b></span>`)
 
 var panel = document.createElement("div");
 panel.setAttribute("id", "panel");
