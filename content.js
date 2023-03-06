@@ -31,7 +31,7 @@ let bufki = setInterval(() => {
 }
 
 GAME.socket.on('disconnect', function(disconnect) {
-  customLog(`<span style="color: red;"><b>ROZŁĄCZONO Z SERWEREM!!!</b></span>`)
+  customLog(`<span style="color: red;"><b>ROZŁĄCZONO Z SERWEREM</b></span>`)
   });
 
   customLog(`<span style="color: green;"><b>POŁĄCZONO SERWEREM</b></span>`)

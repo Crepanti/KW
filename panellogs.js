@@ -10,7 +10,9 @@ customLog = function(message, color) {
 };
 
 function getLogs() {
-  return localStorage.getItem('logi') || '';
+  var logi = localStorage.getItem('logi') || '';
+  var logsWithColor = logi.replace(/color:/g, 'color: silver;');
+  return logsWithColor;
 }
 
 var panel = document.createElement("div");
@@ -62,7 +64,7 @@ resetBtn.style.cursor = "pointer";
 resetBtn.addEventListener("click", function() {
   logtime = $('#server_time').text();
   logi = "";
-  content.innerHTML = `> <span style="color: white;">${logtime}: Logi Wyczyszczone</span>`;
+  content.innerHTML = `> <span style="color: white;">${logtime}: Raporty Wyczyszczone</span>`;
   localStorage.removeItem('logi');
 });
 
