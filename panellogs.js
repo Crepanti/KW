@@ -3,9 +3,15 @@ var resetBtn = null;
 
 customLog = function(message, color) {
   logtime = $('#server_time').text();
+  var logi = localStorage.getItem('logi') || '';
   logi = `<span style="padding-left: 10px; color: ${color};">${logtime}: ` + message + `<br></span>` + logi;
   content.innerHTML = `> <span style="color: white;">${logi}</span>`;
+  localStorage.setItem('logi', logi);
 };
+
+function getLogs() {
+  return localStorage.getItem('logi') || '';
+}
 
 var panel = document.createElement("div");
 panel.setAttribute("id", "panel");
@@ -33,6 +39,8 @@ panel.appendChild(logs);
 
 var content = document.createElement("div");
 content.setAttribute("id", "content");
+content.innerHTML = ``;
+content.innerHTML = getLogs();
 panel.appendChild(content);
 
 var resetBtn = document.createElement("div");
@@ -55,6 +63,7 @@ resetBtn.addEventListener("click", function() {
   logtime = $('#server_time').text();
   logi = "";
   content.innerHTML = `> <span style="color: white;">${logtime}: Logi Wyczyszczone</span>`;
+  localStorage.removeItem('logi');
 });
 
 panel.appendChild(resetBtn);
