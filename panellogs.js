@@ -3,9 +3,20 @@ var resetBtn = null;
 
 customLog = function(message, color) {
   logtime = $('#server_time').text();
+  var logi = localStorage.getItem('logi') || '';
   logi = `<span style="padding-left: 10px; color: ${color};">${logtime}: ` + message + `<br></span>` + logi;
   content.innerHTML = `> <span style="color: white;">${logi}</span>`;
+  localStorage.setItem('logi', logi);
 };
+
+// przy ładowaniu strony
+window.onload = function() {
+  var logi = localStorage.getItem('logi');
+  if (logi) {
+    content.innerHTML = `> <span style="color: white;">${logi}</span>`;
+  }
+};
+
 
 var panel = document.createElement("div");
 panel.setAttribute("id", "panel");
