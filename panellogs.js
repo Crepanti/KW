@@ -10,9 +10,7 @@ customLog = function(message, color) {
 };
 
 function getLogs() {
-  var logi = localStorage.getItem('logi') || '';
-  var logsWithColor = logi.replace(/color:/g, 'color: silver;');
-  return logsWithColor;
+  return localStorage.getItem('logi') || '';
 }
 
 var panel = document.createElement("div");

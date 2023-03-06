@@ -31,10 +31,10 @@ let bufki = setInterval(() => {
 }
 
 GAME.socket.on('disconnect', function(disconnect) {
-  customLog(`<span style="color: red;"><b>ROZŁĄCZONO Z SERWEREM</b></span>`)
+  customLog(`<span style="color: red;"><b>🔴 ROZŁĄCZONO</b></span>`)
   });
 
-  customLog(`<span style="color: green;"><b>POŁĄCZONO Z SERWEREM</b></span>`)
+  customLog(`<span style="color: green;"><b>🟢 POŁĄCZONO</b></span>`)
 
 var warLimit = 0
 let res = [];
