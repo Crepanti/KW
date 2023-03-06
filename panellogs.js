@@ -62,7 +62,7 @@ resetBtn.style.cursor = "pointer";
 resetBtn.addEventListener("click", function() {
   logtime = $('#server_time').text();
   logi = "";
-  content.innerHTML = `> <span style="color: white;">${logtime}: Raporty Wyczyszczone</span>`;
+  content.innerHTML = ` > <span style="color: white;"> ${logtime}: Raporty Wyczyszczone</span>`;
   localStorage.removeItem('logi');
 });
 
