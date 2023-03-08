@@ -54,9 +54,9 @@ div.style.position = "fixed";
 div.style.bottom = "0";
 div.style.right = "0";
 div.style.width = "24.1%";
-div.style.height = "76%";
+div.style.height = "35%";
 div.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; // Ustaw przezroczysty kolor tła
-div.style.border = "3px solid white"; // Dodaj białą ramkę o grubości 3 pikseli
+div.style.border = "5px solid black"; // Dodaj białą ramkę o grubości 3 pikseli
 
 // Dodaj element div do ciała strony
 document.body.appendChild(div);
@@ -71,11 +71,10 @@ header.style.left = "0";
 header.style.width = "100%";
 header.style.padding = "7px 0";
 header.style.textAlign = "center";
-header.style.backgroundColor = "rgba(20, 20, 19)";
 header.style.color = "white";
 header.style.fontSize = "14px";
 header.style.fontWeight = "bold";
-header.innerHTML = "SOLUCJA"
+header.innerHTML = ""
 
 div.appendChild(header);
 
@@ -93,6 +92,22 @@ div.appendChild(text);
 
 questCoordinates = [];
 
+function createGoButton(x, y) {
+  const button = document.createElement("button");
+  button.innerHTML = "IDŹ";
+  button.style.backgroundColor = "transparent";
+  button.style.border = "2px solid white";
+  button.style.color = "white";
+  button.style.opacity = "0.7";
+  button.style.padding = "5px 10px";
+  button.style.fontSize = "12px";
+  button.addEventListener("click", function(event) {
+    event.preventDefault();
+    goQuest(x, y);
+  });
+  return button;
+}
+
 function updateQuestNames() {
   if (typeof GAME.char_data !== 'undefined') {
     const quests = GAME.map_quests;
@@ -109,7 +124,7 @@ function updateQuestNames() {
         if (quests[key] && quests[key].length > 0) {
           for (let quest of quests[key]) {
             if (quest && typeof quest === 'object' && Object.keys(quest).length > 0 && quest.name) {
-              questNames += '<button class="active newBtn option left" onclick="goQuest(' + x + ', ' + y + ')">IDŹ</button> ' + ' [ ' + x + ' | ' + y + ' ]' + ': ' + quest.name + '<br>';
+              questNames += createGoButton(x, y).outerHTML + ' [ ' + x + ' | ' + y + ' ]' + ' ' + quest.name + '<br>';
             }
           }
         }
@@ -158,11 +173,12 @@ function textorek() {
       return this.tagName !== 'B';
     });
   }).html();
-header.innerHTML = '[ GŁÓWNA ]' + textoro;
+header.innerHTML = '[ FABUŁA ]' + textoro;
 }
 
 setInterval(function() {
+  textorek();
   if (typeof textoro === 'undefined' || textoro === '') {
     textorek();
   }
-}, 30000);
+}, 1000);
