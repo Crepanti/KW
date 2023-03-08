@@ -1,7 +1,36 @@
+const places = [
+  "Pałac Wszechmogącego",
+  "Studnia życzeń",
+  "Siedziba Czterech Szkół",
+  "Siedziba Imperium",
+  "Planeta Klanowa",
+  "Prywatna Planeta",
+  "Wieczny Mrok",
+  "Zamarznięte Jezioro",
+  "Alternatywny Pałac Wszechmogącego",
+  "Wnętrze Cerbera",
+  "Niebiański pałac",
+  "Knieja",
+  "Planeta Bogow - Wschód",
+  "Zniszczone Miasto - Wschód",
+  "Bezimmiena Planeta",
+  "Pola Kaishin",
+  "Planeta Potaufeu",
+  "Planeta Vestria - Centrum",
+  "Planeta Beerusa",
+  "Dom Urunai Baby",
+  "Kraniec",
+  "Obrzeża Areny",
+  "Centrum Wszechświata",
+  "Zachodnia Stolica",
+  "Pobojowisko Skaliste"
+];
+
+
 GAME.endQuest = function(quest_end){
   JQS.qcc.hide();
   $('#field_q_'+quest_end).fadeOut();
-  var anyQuestsCompleted = false; // zmienna przechowująca informację o tym, czy chociaż jedno zadanie zostało zakończone
+  var anyQuestsCompleted = false; 
 
   for(var ind in this.map_quests){
     if(this.map_quests.hasOwnProperty(ind)){
@@ -14,14 +43,12 @@ GAME.endQuest = function(quest_end){
       this.map_quests[ind] = this.map_quests[ind].filter(function(quest) {
         return quest.end != 1;
       });
-      // Sprawdź, czy lista zadań dla danej części mapy jest pusta
       if(this.map_quests[ind].length === 0){
         anyQuestsCompleted = true;
       }
     }
   }
   
-  // Wywołaj funkcję updateQuestNames(), jeśli co najmniej jedno zadanie zostało zakończone
   if (anyQuestsCompleted) {
     updateQuestNames();
   }
@@ -46,25 +73,109 @@ GAME.moveQuest = function(quest_move){
   updateQuestNames();
 }
 
-// Utwórz element div
+
+
+
+/*
+ZADANIA CODZIENNE
+*/
+
+function wykonano(event) {
+  const button = event.target;
+  const doneImage = document.createElement("img");
+  doneImage.src = "/gfx/layout/done.png";
+  doneImage.width = 16;
+  doneImage.height = 16;
+  button.appendChild(doneImage);
+}
+
+function quest2() {
+console.log("")
+}
+
+function quest3() {
+console.log("")
+}
+
+const daily = document.createElement("div");
+
+daily.style.position = "fixed";
+daily.style.bottom = "35.7%";
+daily.style.right = "0";
+daily.style.width = "24.1%";
+daily.style.height = "40%";
+daily.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+daily.style.border = "2px solid white";
+
+document.body.appendChild(daily);
+
+const dailyheader = document.createElement("div");
+
+dailyheader.style.position = "absolute";
+dailyheader.style.top = "0";
+dailyheader.style.left = "0";
+dailyheader.style.width = "100%";
+dailyheader.style.padding = "7px 0";
+dailyheader.style.textAlign = "center";
+dailyheader.style.color = "white";
+dailyheader.style.fontSize = "14px";
+dailyheader.style.fontWeight = "bold";
+dailyheader.innerHTML = "ZADANIA CODZIENNE [Ukończono: 0]"
+
+daily.appendChild(dailyheader);
+
+const dailytext = document.createElement("div");
+
+places.forEach(place => {
+  const button = document.createElement("button");
+  button.innerHTML = `${place}`;
+  button.style.backgroundColor = "transparent";
+  button.style.border = "2px solid white";
+  button.style.color = "white";
+  button.style.opacity = "0.7";
+  button.style.padding = "8px 8px";
+  button.style.fontSize = "12px";
+  button.style.marginLeft = "7px";
+  dailytext.appendChild(button);
+
+if (place === "Pałac Wszechmogącego") {
+  button.addEventListener("click", wykonano);
+} else if (place === "Studnia życzeń") {
+  button.addEventListener("click", quest2);
+} else if (place === "Siedziba Czterech Szkół") {
+  button.addEventListener("click", quest3);
+}
+});
+
+dailytext.style.position = "absolute";
+dailytext.style.top = "40px";
+dailytext.style.left = "0px";
+dailytext.style.fontSize = "14px";
+dailytext.style.color = "white";
+
+daily.appendChild(dailytext);
+
+/*
+FABUŁA I QUESTY LOKACJI
+*/
+
+
 const div = document.createElement("div");
 
-// Ustaw styl elementu div
 div.style.position = "fixed";
 div.style.bottom = "0";
 div.style.right = "0";
 div.style.width = "24.1%";
 div.style.height = "35%";
-div.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; // Ustaw przezroczysty kolor tła
-div.style.border = "5px solid black"; // Dodaj białą ramkę o grubości 3 pikseli
+div.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+div.style.border = "2px solid white";
 
-// Dodaj element div do ciała strony
 document.body.appendChild(div);
 
-// Utwórz element div dla nagłówka
+
+
 const header = document.createElement("div");
 
-// Ustaw styl elementu header
 header.style.position = "absolute";
 header.style.top = "0";
 header.style.left = "0";
@@ -78,10 +189,10 @@ header.innerHTML = ""
 
 div.appendChild(header);
 
-// Utwórz element div dla tekstu
+
+
 const text = document.createElement("div");
 
-// Ustaw styl elementu text
 text.style.position = "absolute";
 text.style.top = "60px";
 text.style.left = "0px";
@@ -101,6 +212,7 @@ function createGoButton(x, y) {
   button.style.opacity = "0.7";
   button.style.padding = "5px 10px";
   button.style.fontSize = "12px";
+  button.style.marginLeft = "7px";
   button.dataset.x = x;
   button.dataset.y = y;
   return button;
@@ -133,7 +245,7 @@ function updateQuestNames() {
           for (let quest of quests[key]) {
             if (quest && typeof quest === 'object' && Object.keys(quest).length > 0 && quest.name) {
               const button = createGoButton(x, y);
-              questNames += button.outerHTML + ' [ ' + x + ' | ' + y + ' ]' + ' ' + quest.name + '<br>';
+              questNames += button.outerHTML + '   [ ' + x + ' | ' + y + ' ]' + ' ' + quest.name + '<br>';
             }
           }
         }
@@ -188,7 +300,7 @@ function textorek() {
       return this.tagName !== 'B';
     });
   }).html();
-header.innerHTML = '[ FABUŁA ]' + textoro;
+header.innerHTML = 'Misja Fabularna:' + textoro;
 }
 
 setInterval(function() {
