@@ -149,7 +149,9 @@ function goQuest(x, y) {
   var currentX = Math.round(GAME.char_data.x);
   var currentY = Math.round(GAME.char_data.y);
 
-  if (currentX !== x || currentY !== y) {
+  var distance = Math.sqrt(Math.pow(currentX - x, 2) + Math.pow(currentY - y, 2));
+
+  if (distance > 0.5) { // Sprawdzamy, czy postać jest wystarczająco blisko celu
     if (currentX > x) {
       GAME.map_move(8); // Poruszanie się w lewo
     } else if (currentX < x) {
@@ -163,8 +165,6 @@ function goQuest(x, y) {
     setTimeout(function() {
       goQuest(x, y);
     }, 50);
-  } else {
-    clearTimeout(timeoutId);
   }
 }
 
