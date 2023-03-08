@@ -101,12 +101,20 @@ function createGoButton(x, y) {
   button.style.opacity = "0.7";
   button.style.padding = "5px 10px";
   button.style.fontSize = "12px";
-  button.addEventListener("click", function(event) {
-    event.preventDefault();
-    goQuest(x, y);
-  });
+  button.dataset.x = x;
+  button.dataset.y = y;
   return button;
 }
+
+document.addEventListener('click', function(event) {
+  if (event.target && event.target.tagName === 'BUTTON') {
+    const x = event.target.dataset.x;
+    const y = event.target.dataset.y;
+    if (x && y) {
+      goQuest(x, y);
+    }
+  }
+});
 
 function updateQuestNames() {
   if (typeof GAME.char_data !== 'undefined') {
@@ -124,7 +132,8 @@ function updateQuestNames() {
         if (quests[key] && quests[key].length > 0) {
           for (let quest of quests[key]) {
             if (quest && typeof quest === 'object' && Object.keys(quest).length > 0 && quest.name) {
-              questNames += createGoButton(x, y).outerHTML + ' [ ' + x + ' | ' + y + ' ]' + ' ' + quest.name + '<br>';
+              const button = createGoButton(x, y);
+              questNames += button.outerHTML + ' [ ' + x + ' | ' + y + ' ]' + ' ' + quest.name + '<br>';
             }
           }
         }
@@ -137,22 +146,28 @@ function updateQuestNames() {
 
 
 function goQuest(x, y) {
-  if (GAME.char_data.x !== x || GAME.char_data.y !== y) {
-    if (GAME.char_data.x > x) {
+  var currentX = Math.round(GAME.char_data.x);
+  var currentY = Math.round(GAME.char_data.y);
+
+  if (currentX !== x || currentY !== y) {
+    if (currentX > x) {
       GAME.map_move(8); // Poruszanie się w lewo
-    } else if (GAME.char_data.x < x) {
+    } else if (currentX < x) {
       GAME.map_move(7); // Poruszanie się w prawo
-    } else if (GAME.char_data.y > y) {
+    } else if (currentY > y) {
       GAME.map_move(2); // Poruszanie się w górę
-    } else if (GAME.char_data.y < y) {
+    } else if (currentY < y) {
       GAME.map_move(1); // Poruszanie się w dół
     }
-    
+
     setTimeout(function() {
       goQuest(x, y);
     }, 50);
+  } else {
+    clearTimeout(timeoutId);
   }
 }
+
 
 let _mapQuests = GAME.map_quests;
 
