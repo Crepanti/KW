@@ -119,6 +119,10 @@ GAME.cached_data = function() {
     {
       a: 39, // Klan
       type: 35
+    },
+    {
+      a: 18, // Alt Transformacja
+      type: 1
     }
   ];
   var pos = $('#char_buffs').offset();
