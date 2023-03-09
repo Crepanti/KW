@@ -18,6 +18,7 @@ GAME.emitOrder = (data) => GAME.socket.emit('ga',data);
 
 var tabela99=[472686, 482504, 410723];
 
+
 var buffki = document.createElement('button');
 buffki.innerHTML = "ODPAL BUFFY"
 buffki.className = "newBtn option"
