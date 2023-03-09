@@ -40,7 +40,7 @@ button.style.fontSize = "10px";
 button.style.marginLeft = "7px";
 
 
-document.addEventListener('click', function() {
+button.addEventListener('click', function() {
     button.style.color = "green";
     button.innerHTML = "<b>AUTO: ON</b>";
     button.style.border = "1px solid green";
@@ -50,6 +50,8 @@ document.addEventListener('click', function() {
         }
       }, 10000);
 });
+
+document.body.appendChild(button);
       
 function panelTimer() {
     if ($('#tech_list2').find('.timer').text() === '') {
