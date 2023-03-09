@@ -1,3 +1,5 @@
+GAME.emitOrder = (data) => GAME.socket.emit('ga',data);
+
 var alttech;
 
 var minipanel = document.createElement("div");
@@ -51,7 +53,6 @@ button.addEventListener('click', function() {
       }, 10000);
 });
 
-document.body.appendChild(button);
       
 function panelTimer() {
     if ($('#tech_list2').find('.timer').text() === '') {
@@ -59,8 +60,8 @@ function panelTimer() {
       }
       
     alttech = $('#tech_list2').find('.timer').text()
-    const auracumb = button;
-    contpanel.innerHTML = auracumb.outerHTML + `<span style="color: white;"> Mroczna Aura: ${alttech}</span>` ;
+    contpanel.innerHTML = `<span style="color: white;"> Mroczna Aura: ${alttech}</span>` ;
+    contpanel.appendChild(button);
     }
 
 setInterval(panelTimer, 1000);
