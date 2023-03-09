@@ -62,6 +62,6 @@ function panelTimer() {
     alttech = $('#tech_list2').find('.timer').text()
     contpanel.innerHTML = `<span style="color: white;"> Mroczna Aura: ${alttech}</span>` ;
     contpanel.appendChild(button);
-    }
+  }
 
 setInterval(panelTimer, 1000);
