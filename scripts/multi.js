@@ -75,7 +75,7 @@ panelek.style.position = 'fixed';
 panelek.style.top = '30px';
 panelek.style.left = '0px';
 panelek.style.padding = '10px';
-panelek.style.background = '#1c1c1c';
+panelek.style.background = '"rgba(0, 0, 0, 0.5)"';
 panelek.style.border = '1px solid #444';
 panelek.style.borderRadius = '5px';
 panelek.style.color = '#fff';
@@ -123,6 +123,8 @@ for (let i = 0; i < statOptions.length; i++) {
   const option = document.createElement('option');
   option.value = i+1;
   option.text = statOptions[i];
+  option.style.backgroundColor = 'black';
+  option.style.color = '#ffffff';
   statSelect.appendChild(option);
 }
 statSelect.style.display = 'block';
@@ -130,9 +132,9 @@ statSelect.style.marginBottom = '10px';
 statSelect.style.width = '100%';
 statSelect.style.padding = '5px';
 statSelect.style.borderRadius = '5px';
-statSelect.style.background = '#444';
+statSelect.style.background = 'rgba(0, 0, 0, 0.5)';
 statSelect.style.color = '#fff';
-statSelect.style.border = 'none';
+statSelect.style.border = '1px solid #444';
 
 const durationLabel = document.createElement('label');
 durationLabel.textContent = 'CZAS:';
@@ -144,6 +146,8 @@ for (let i = 1; i <= 12; i++) {
   const option = document.createElement('option');
   option.value = i;
   option.text = i + " godz.";
+  option.style.backgroundColor = 'black';
+  option.style.color = '#ffffff';
   durationSelect.appendChild(option);
 }
 durationSelect.style.display = 'block';
@@ -151,9 +155,9 @@ durationSelect.style.marginBottom = '10px';
 durationSelect.style.width = '100%';
 durationSelect.style.padding = '5px';
 durationSelect.style.borderRadius = '5px';
-durationSelect.style.background = '#444';
+durationSelect.style.background = 'rgba(0, 0, 0, 0.5)';
 durationSelect.style.color = '#fff';
-durationSelect.style.border = 'none';
+durationSelect.style.border = '1px solid #444';
 
 const masterLabel = document.createElement('label');
 const masterLabelText = `MISTRZ: `;
@@ -183,6 +187,8 @@ for (let i = 0; i < masterOptions.length; i++) {
   if (i === 0) {
     option.textContent = 'BRAK';
   }
+  option.style.backgroundColor = 'black';
+  option.style.color = '#ffffff';
   masterSelect.appendChild(option);
 }
 
@@ -192,9 +198,9 @@ masterSelect.style.marginBottom = '10px';
 masterSelect.style.width = '100%';
 masterSelect.style.padding = '5px';
 masterSelect.style.borderRadius = '5px';
-masterSelect.style.background = '#444';
+masterSelect.style.background = 'rgba(0, 0, 0, 0.5)';
 masterSelect.style.color = '#fff';
-masterSelect.style.border = 'none';
+masterSelect.style.border = '1px solid #444';
 
 statSelect.addEventListener('change', function() {
   order.stat = parseInt(this.value);
