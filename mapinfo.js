@@ -16,14 +16,10 @@ const places = [
   "Bezimmiena Planeta",
   "Pola Kaishin",
   "Planeta Potaufeu",
-  "Planeta Vestria - Centrum",
-  "Planeta Beerusa",
-  "Dom Urunai Baby",
   "Kraniec",
   "Obrzeża Areny",
   "Centrum Wszechświata",
-  "Zachodnia Stolica",
-  "Pobojowisko Skaliste"
+  "Planeta Liguira"
 ];
 
 
